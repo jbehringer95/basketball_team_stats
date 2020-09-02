@@ -9,11 +9,16 @@ players_copy = copy.deepcopy(constants.PLAYERS)
 teams_copy = copy.deepcopy(constants.TEAMS)
 experience_player = []
 not_experience_player = []
+experience_player_name = []
+not_experience_player_name = []
+team = ''
+
 
 
 def clean_data():
     for player in players_copy:
         player['height'] = int(player['height'].split()[0])
+        
         if player['experience'] == 'YES':
             player['experience'] = bool('TRUE')
         
@@ -24,6 +29,8 @@ def clean_data():
 def experience_player_split():
     global experience_player
     global not_experience_player
+    global not_experience_player_name
+    global not_experience_player
     
     for player in players_copy:
         if player['experience'] == True:
@@ -31,6 +38,12 @@ def experience_player_split():
         
         else:
             not_experience_player.append(player)
+    
+    for experience in experience_player:
+        experience_player_name.append(experience['name'])
+
+    for not_experience in not_experience_player:
+        not_experience_player_name.append(not_experience['name'])
 
 
 def balance_teams():
@@ -39,24 +52,22 @@ def balance_teams():
     global experience_player
     global num_player_teams
     counter = 0
-    player_name = []
     player_select = []
-    num_player_teams = int(len(players_copy) / len(teams_copy))
-    
-    for experience in experience_player:
-        player_name.append(experience['name'])
-
-    for not_experience in experience_player:
-        player_name.append(not_experience['name'])
+    num_player_teams = int(len(players_copy)) / int(len(teams_copy))
 
     
-    while counter <= num_player_teams:
+    while counter != num_player_teams:
+        random_number = random.randint(0, len(experience_player_name) - 1)
         counter += 1
-        random_number = random.randint(0, len(player_name))
-        player_pick = player_name.pop(random_number)
+        player_pick = experience_player_name.pop(random_number)
         player_select.append(player_pick)
-
-        print(player_select)
+        counter += 1
+        player_pick= not_experience_player_name.pop(random_number)
+        player_select.append(player_pick)
+    
+    
+    
+        
 
     
         
@@ -75,4 +86,6 @@ def balance_teams():
 clean_data()
 experience_player_split()
 balance_teams()
-print(player_select)
+
+
+
