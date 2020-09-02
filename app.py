@@ -12,6 +12,7 @@ not_experience_player = []
 experience_player_name = []
 not_experience_player_name = []
 team = ''
+user_input = ''
 
 
 
@@ -62,8 +63,40 @@ def balance_teams():
         player_pick = experience_player_name.pop(random_number)
         player_select.append(player_pick)
         counter += 1
-        player_pick= not_experience_player_name.pop(random_number)
+        player_pick = not_experience_player_name.pop(random_number)
         player_select.append(player_pick)
+
+
+def main_menu():
+    global user_input
+    print('Welcome to the BasketBall stat tool')
+    while True:
+        user_input = int(input('What would you like to do. 1 or 2 \n 1. Display teams \n 2. Quit \n'))
+        try:
+            if user_input != 1 and user_input != 2:
+                raise ValueError('That is not a valid option. Please pick 1 or 2 \n')
+            
+        except ValueError as err:
+            print('That is not a valid option. Please pick 1 or 2 \n')
+
+        else:
+            break
+
+    return user_input
+            
+
+            
+            
+
+
+
+
+main_menu()
+print(user_input)
+    
+    
+    
+
     
     
     
@@ -83,9 +116,7 @@ def balance_teams():
     
 
 
-clean_data()
-experience_player_split()
-balance_teams()
+
 
 
 
