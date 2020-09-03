@@ -2,9 +2,6 @@ import constants
 import copy
 import random
 
-if __name__ == "__main__":
-    pass
-
 players_copy = copy.deepcopy(constants.PLAYERS)
 teams_copy = copy.deepcopy(constants.TEAMS)
 experience_player = []
@@ -86,32 +83,34 @@ def main_menu():
             break
 
 
-main_menu()
-
-if user_input == '1':
-
-    clean_data()
-    experience_player_split()
-    balance_teams()
-    panthers = player_select
-    balance_teams()
-    bandits = player_select
-    balance_teams()
-    warriors = player_select
+if __name__ == "__main__":
     
-    while True:
-        user_team = input('Please select which team you want \n1. Panthers \n2. Bandits \n3. Warriors \n')
+    main_menu()
 
-        try:
-            if user_team != '1' and user_team != '2' and user_team != '3':
-                raise ValueError('That is not a valid option. Please pick  a number between 1 and 3')
+    if user_input == '1':
 
-        except ValueError:
-            print('That is not a valid option. Please pick a number between 1 and 3')
+        clean_data()
+        experience_player_split()
+        balance_teams()
+        panthers = player_select
+        balance_teams()
+        bandits = player_select
+        balance_teams()
+        warriors = player_select
+        
+        while True:
+            user_team = input('Please select which team you want \n1. Panthers \n2. Bandits \n3. Warriors \n')
 
-        if user_team == '1' or user_team == '2' or user_team == '3':
-            print('Team: {}'.format(teams_copy[int(user_team) - 1]))
-            print('Number of player: {}'.format(len(panthers)))
-            print('Players on team:')
-            print(*panthers, sep=', ')
-            break
+            try:
+                if user_team != '1' and user_team != '2' and user_team != '3':
+                    raise ValueError('That is not a valid option. Please pick  a number between 1 and 3')
+
+            except ValueError:
+                print('That is not a valid option. Please pick a number between 1 and 3')
+
+            if user_team == '1' or user_team == '2' or user_team == '3':
+                print('Team: {}'.format(teams_copy[int(user_team) - 1]))
+                print('Number of player: {}'.format(len(panthers)))
+                print('Players on team:')
+                print(*panthers, sep=', ')
+                break
