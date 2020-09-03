@@ -13,33 +13,37 @@ experience_player_name = []
 not_experience_player_name = []
 team = ''
 user_input = ''
-
+user_team = ''
+panthers = []
+bandits = []
+warriors = []
 
 
 def clean_data():
     for player in players_copy:
+
         player['height'] = int(player['height'].split()[0])
-        
+
         if player['experience'] == 'YES':
             player['experience'] = bool('TRUE')
-        
+
         else:
             player['experience'] = bool('')
-    
+
 
 def experience_player_split():
     global experience_player
     global not_experience_player
     global not_experience_player_name
     global not_experience_player
-    
+
     for player in players_copy:
-        if player['experience'] == True:
+        if player['experience'] is True:
             experience_player.append(player)
-        
+
         else:
             not_experience_player.append(player)
-    
+
     for experience in experience_player:
         experience_player_name.append(experience['name'])
 
@@ -56,7 +60,6 @@ def balance_teams():
     player_select = []
     num_player_teams = int(len(players_copy)) / int(len(teams_copy))
 
-    
     while counter != num_player_teams:
         random_number = random.randint(0, len(experience_player_name) - 1)
         counter += 1
@@ -75,24 +78,71 @@ def main_menu():
         try:
             if user_input != 1 and user_input != 2:
                 raise ValueError('That is not a valid option. Please pick 1 or 2 \n')
-            
-        except ValueError as err:
+
+        except ValueError:
             print('That is not a valid option. Please pick 1 or 2 \n')
 
         else:
             break
 
-    return user_input
-            
-
-            
-            
-
-
-
 
 main_menu()
-print(user_input)
+
+if user_input == 1:
+
+    while True:
+        clean_data()
+        experience_player_split()
+        balance_teams()
+        panthers = player_select
+        balance_teams()
+        bandits = player_select
+        balance_teams()
+        warriors = player_select
+
+        user_team = int(input('Please select which team you want \n1. Panthers \n2. bandits \n3. Warriors \n'))
+
+        try:
+            if user_team != 1 and user_team != 2 and user_team != 3:
+                raise ValueError('That is not a valid option. Please pick  a number between 1 and 3')
+
+        except:
+            print('That is not a valid option. Please pick a number between 1 and 3')
+
+        if user_team == 1:
+            print('Team: {}'.format(teams_copy[0]))
+            print('Number of player: {}'.format(len(panthers)))
+            print('Players on team:')
+            print(*panthers, sep=', ')
+            break
+
+        elif user_team == 2:
+            print('Team: {}'.format(teams_copy[1]))
+            print('Number of player: {}'.format(len(bandits)))
+            print('Players on team:')
+            print(*bandits, sep=', ')
+            break
+
+        elif user_team == 3:
+            print('Team: {}'.format(teams_copy[2]))
+            print('Number of player: {}'.format(len(warriors)))
+            print('Players on team:')
+            print(*warriors, sep=', ')
+            break
+
+
+        
+
+    
+
+        
+
+    
+    
+    
+
+
+
     
     
     
