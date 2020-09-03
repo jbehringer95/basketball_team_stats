@@ -74,12 +74,12 @@ def main_menu():
     global user_input
     print('Welcome to the BasketBall stat tool')
     while True:
-        user_input = int(input('What would you like to do. 1 or 2 \n 1. Display teams \n 2. Quit \n'))
+        user_input = input('What would you like to do. 1 or 2 \n 1. Display teams \n 2. Quit \n')
         try:
-            if user_input != 1 and user_input != 2:
+            if user_input != '1' and user_input != '2':
                 raise ValueError('That is not a valid option. Please pick 1 or 2 \n')
 
-        except ValueError:
+        except ValueError :
             print('That is not a valid option. Please pick 1 or 2 \n')
 
         else:
@@ -88,32 +88,38 @@ def main_menu():
 
 main_menu()
 
-if user_input == 1:
+if user_input == '1':
 
+    clean_data()
+    experience_player_split()
+    balance_teams()
+    panthers = player_select
+    balance_teams()
+    bandits = player_select
+    balance_teams()
+    warriors = player_select
+    
     while True:
-        clean_data()
-        experience_player_split()
-        balance_teams()
-        panthers = player_select
-        balance_teams()
-        bandits = player_select
-        balance_teams()
-        warriors = player_select
-
-        user_team = int(input('Please select which team you want \n1. Panthers \n2. bandits \n3. Warriors \n'))
+        user_team = input('Please select which team you want \n1. Panthers \n2. Bandits \n3. Warriors \n')
 
         try:
-            if user_team != 1 and user_team != 2 and user_team != 3:
+            if user_team != '1' and user_team != '2' and user_team != '3':
                 raise ValueError('That is not a valid option. Please pick  a number between 1 and 3')
 
-        except:
+        except ValueError:
             print('That is not a valid option. Please pick a number between 1 and 3')
 
-        print('Team: {}'.format(teams_copy[user_team - 1]))
-        print('Number of player: {}'.format(len(panthers)))
-        print('Players on team:')
-        print(*panthers, sep=', ')
-        break
+        if user_team == '1' or user_team == '2' or user_team == '3':
+            print('Team: {}'.format(teams_copy[int(user_team) - 1]))
+            print('Number of player: {}'.format(len(panthers)))
+            print('Players on team:')
+            print(*panthers, sep=', ')
+            break
+        
+
+       
+
+        
 
 
 
