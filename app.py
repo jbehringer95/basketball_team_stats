@@ -109,26 +109,12 @@ if user_input == 1:
         except:
             print('That is not a valid option. Please pick a number between 1 and 3')
 
-        if user_team == 1:
-            print('Team: {}'.format(teams_copy[0]))
-            print('Number of player: {}'.format(len(panthers)))
-            print('Players on team:')
-            print(*panthers, sep=', ')
-            break
+        print('Team: {}'.format(teams_copy[user_team - 1]))
+        print('Number of player: {}'.format(len(panthers)))
+        print('Players on team:')
+        print(*panthers, sep=', ')
+        break
 
-        elif user_team == 2:
-            print('Team: {}'.format(teams_copy[1]))
-            print('Number of player: {}'.format(len(bandits)))
-            print('Players on team:')
-            print(*bandits, sep=', ')
-            break
-
-        elif user_team == 3:
-            print('Team: {}'.format(teams_copy[2]))
-            print('Number of player: {}'.format(len(warriors)))
-            print('Players on team:')
-            print(*warriors, sep=', ')
-            break
 
 
         
