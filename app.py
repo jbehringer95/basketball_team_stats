@@ -79,7 +79,7 @@ def main_menu():
             if user_input != '1' and user_input != '2':
                 raise ValueError('That is not a valid option. Please pick 1 or 2 \n')
 
-        except ValueError :
+        except ValueError:
             print('That is not a valid option. Please pick 1 or 2 \n')
 
         else:
@@ -115,50 +115,3 @@ if user_input == '1':
             print('Players on team:')
             print(*panthers, sep=', ')
             break
-        
-
-       
-
-        
-
-
-
-        
-
-    
-
-        
-
-    
-    
-    
-
-
-
-    
-    
-    
-
-    
-    
-    
-        
-
-    
-        
-        
-       
-        
-
-    
-
-    
-
-
-    
-
-
-
-
-
-
